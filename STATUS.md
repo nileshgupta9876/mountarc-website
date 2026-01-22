@@ -28,11 +28,15 @@
 - [x] CLAUDE.md filled with project details
 - [x] PROJECT-OVERVIEW.md completed
 - [x] All requirements documented
+- [x] Handoff to BA created (`/handoffs/20260122_1537_PM-to-BA.md`)
+- [x] Handoff to Architect created (`/handoffs/20260122_1538_PM-to-Architect.md`)
 
 ---
 
 ## In Progress 🔄
 
+- [ ] BA: Creating epics and user stories - **Started: Jan 22**
+- [ ] Architect: Technical design and architecture - **Started: Jan 22**
 - [ ] Design approval (email templates, page designs) - **Next: Jan 24**
 - [ ] Development environment setup - **Next: Jan 27**
 
@@ -47,8 +51,10 @@
 ## Next Up 📋
 
 ### Immediate (This Week)
-- [ ] Hand off to BA for detailed user stories
-- [ ] Hand off to Architect for technical design
+- [x] Hand off to BA for detailed user stories ✅
+- [x] Hand off to Architect for technical design ✅
+- [ ] BA: Complete epics and user stories (Target: Jan 24-25)
+- [ ] Architect: Complete technical architecture (Target: Jan 24-25)
 - [ ] Create email template designs
 - [ ] Design page layouts (contact, book-call, thank-you, unsubscribe)
 - [ ] Set up Resend account
@@ -167,12 +173,15 @@
 - Requirements gathering: Complete
 - PRD creation: Complete
 - Decision documentation: Complete
-- Next: Hand off to BA and Architect
+- Handoff creation: Complete
+- Status: PM work complete, monitoring BA and Architect progress
+
+### Active Roles
+- **Business Analyst:** 🔄 In Progress - Creating epics and user stories (Target: Jan 24-25)
+- **Architect:** 🔄 In Progress - Technical design and architecture (Target: Jan 24-25)
 
 ### Pending Roles
-- **Business Analyst:** Define detailed user stories, acceptance criteria
-- **Architect:** Technical design, component architecture
-- **Engineering:** Implementation
+- **Engineering:** Implementation (starts Jan 27)
 - **QA:** Testing strategy, test execution
 - **DevOps:** Deployment, environment setup
 
@@ -186,13 +195,18 @@
 - ✅ [PROJECT-OVERVIEW.md](/PROJECT-OVERVIEW.md) - One-page overview
 - ✅ [Email Service Decision](/decisions/pm/20260122_email-service-provider.md)
 - ✅ [Phase 1 Scope Decision](/decisions/pm/20260122_phase1-scope-definition.md)
+- ✅ [Handoff to BA](/handoffs/20260122_1537_PM-to-BA.md) - User stories and epics brief
+- ✅ [Handoff to Architect](/handoffs/20260122_1538_PM-to-Architect.md) - Technical design brief
+
+### In Progress Documents
+- 🔄 Email template designs
+- 🔄 Page mockups/wireframes
+- 🔄 Technical architecture document (Architect)
+- 🔄 User stories and epics (BA)
 
 ### Pending Documents
-- ⏳ Email template designs
-- ⏳ Page mockups/wireframes
-- ⏳ Technical architecture document
-- ⏳ User stories (BA)
 - ⏳ Test plan (QA)
+- ⏳ Deployment guide (DevOps)
 
 ---
 
