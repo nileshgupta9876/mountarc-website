@@ -1,5 +1,6 @@
-# MountArc Website Enhancement - Project Overview
+# MountArc Website Rebuild - Project Overview
 
+**Type**: Rebuild (Email & Contact System)
 **Status**: Requirements Complete - Ready for Development
 **Started**: January 22, 2026
 **Deadline**: February 28, 2026
@@ -11,7 +12,7 @@
 
 ## Project Summary
 
-MountArc's existing website has a non-functional email and contact system, preventing potential clients from reaching the team. Phase 1 implements a complete email infrastructure with contact forms, discovery call booking, and newsletter subscription functionality using Resend email service and Next.js.
+MountArc's existing website has a non-functional email and contact system, preventing potential clients from reaching the team. Phase 1 **rebuilds** the entire email and contact infrastructure from scratch with modern tools, implementing a complete email system with contact forms, discovery call booking, and newsletter subscription functionality using Resend email service and Next.js.
 
 ### Vision
 
@@ -44,9 +45,39 @@ Enable seamless client communication through reliable, secure, and spam-protecte
 - **Website**: https://mountarc-website-final.vercel.app
 - **LinkedIn**: linkedin.com/company/mountarc
 
+### Communication Channels
+
+**Status**: Not yet configured
+
+For this project, communication happens via:
+- Email (primary)
+- Direct client communication with Project Lead
+
+**Slack Channels**: N/A - Not using Slack for this project
+**Other Tools**: N/A - Email and GitHub are primary channels
+
 ---
 
 ## Project Approach
+
+### Is This a Rebuild?
+
+**Yes** - This is a rebuild of the existing MountArc website email and contact system.
+
+**Context:**
+- The existing website has a non-functional email system
+- Forms exist but don't send emails
+- This project rebuilds the entire email infrastructure from scratch
+- Using modern tools (Resend, reCAPTCHA v3, React Hook Form)
+- Complete replacement of broken functionality
+
+**Rebuild Approach:**
+- Replace existing broken contact forms with new implementation
+- Implement new email infrastructure (Resend)
+- Add new pages (/book-call, /thank-you, /unsubscribe)
+- Maintain existing design aesthetic and branding
+- No database migration (stateless forms)
+- Direct replacement in production
 
 ### Development Methodology
 
@@ -135,6 +166,34 @@ This repository contains the complete MountArc Website project including:
 - API routes: `/api/send-email`
 - Components: Contact form, discovery call form, newsletter form
 - Email templates: 6 branded email types
+
+### Related Repositories
+
+**Status**: Single Repository Approach
+
+This project uses a **single repository** containing:
+- ✅ All documentation and specifications
+- ✅ All source code (frontend + backend)
+- ✅ Infrastructure configuration
+- ✅ Full-stack Next.js application
+
+**No Related Repositories**: This is a monorepo containing everything needed for the MountArc website.
+
+### Future Repositories
+
+**Planned**: None
+
+**Rationale**:
+- Single Next.js application handles both frontend and backend
+- No microservices needed for Phase 1
+- Vercel deployment supports full-stack in one repo
+- Simpler maintenance and deployment
+
+**If Future Phases Require Separation:**
+- Could extract email service to separate microservice
+- Could create separate CMS repository
+- Could create separate admin dashboard repo
+- Decision deferred until Phase 2+ requirements are clear
 
 ---
 
