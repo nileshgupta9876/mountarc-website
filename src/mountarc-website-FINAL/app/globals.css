@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-outfit: 'Outfit', system-ui, sans-serif;
+    --font-space-mono: 'Space Mono', monospace;
+  }
+  
+  body {
+    @apply text-navy bg-white;
+  }
+}
+
+@layer components {
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed-1 {
+    animation: float 7s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+
+  .animate-float-delayed-2 {
+    animation: float 8s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  .animate-float-delayed-3 {
+    animation: float 6.5s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-mint to-teal text-white font-semibold py-3 px-8 rounded-xl;
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-mint/30;
+    @apply relative overflow-hidden;
+    cursor: pointer;
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute top-0 left-[-100%] w-full h-full;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+  }
+
+  .btn-primary:hover::before {
+    @apply left-full;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-mint text-mint font-semibold py-3 px-8 rounded-xl;
+    @apply transition-all duration-300 hover:bg-mint hover:text-white hover:-translate-y-0.5;
+    cursor: pointer;
+  }
+
+  /* Cards */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10;
+    @apply transition-all duration-300 hover:bg-white/10 hover:border-mint/30 hover:-translate-y-1;
+  }
+
+  .service-card {
+    @apply bg-white border border-gray-200 rounded-2xl p-8;
+    @apply transition-all duration-300 hover:border-mint hover:shadow-xl hover:shadow-mint/10 hover:-translate-y-2;
+    @apply relative overflow-hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-mint to-teal;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Stats */
+  .stat-number {
+    @apply text-6xl font-black bg-gradient-to-r from-mint to-teal bg-clip-text text-transparent;
+    line-height: 1;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-2 bg-mint/10 text-teal px-4 py-2 rounded-full;
+    @apply text-sm font-semibold border border-mint/20;
+  }
+
+  .tech-badge {
+    @apply inline-block px-3 py-1.5 bg-mint/10 border border-mint/20 rounded-lg;
+    @apply text-sm font-semibold text-teal;
+  }
+
+  /* Hero gradient */
+  .hero-gradient {
+    @apply bg-gradient-to-br from-dark via-navy to-navy/80 relative overflow-hidden;
+  }
+
+  .hero-gradient::before {
+    content: '';
+    @apply absolute w-[500px] h-[500px] -top-48 -right-48;
+    background: radial-gradient(circle, rgba(127, 204, 193, 0.15) 0%, transparent 70%);
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero-gradient::after {
+    content: '';
+    @apply absolute w-96 h-96 -bottom-36 -left-36;
+    background: radial-gradient(circle, rgba(91, 181, 168, 0.1) 0%, transparent 70%);
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply w-16 h-1 bg-gradient-to-r from-mint to-teal mx-auto mb-8 rounded-full;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-mint rounded-md;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-teal;
+}
