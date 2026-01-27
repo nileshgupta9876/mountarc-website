@@ -156,3 +156,11 @@ $RECYCLE.BIN/
 
 # Project-specific excludes
 # Add your project-specific ignore patterns below
+
+# Claude Code local settings
+.claude/
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
