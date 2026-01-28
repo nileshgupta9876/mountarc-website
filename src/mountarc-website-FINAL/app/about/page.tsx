@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Icons } from '../components/Icons'
 
 export const metadata = {
@@ -34,13 +35,17 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {/* CEO Card */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              {/* Founder Illustration Placeholder */}
+              {/* Founder Photo */}
               <div className="mb-6 flex justify-center">
                 <div className="relative">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-mint/20 to-teal/20 flex items-center justify-center">
-                    <div className="w-28 h-28 rounded-full bg-white flex items-center justify-center">
-                      <Icons.Briefcase className="w-16 h-16 text-mint" />
-                    </div>
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-mint/20 to-teal/20 p-1">
+                    <Image
+                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=256&h=256&fit=crop&crop=face"
+                      alt="Co-Founder & CEO"
+                      width={128}
+                      height={128}
+                      className="w-full h-full rounded-full object-cover"
+                    />
                   </div>
                   <div className="absolute bottom-0 right-0 w-10 h-10 bg-mint rounded-full flex items-center justify-center border-4 border-white">
                     <Icons.Award className="w-6 h-6 text-white" />
@@ -70,13 +75,17 @@ export default function AboutPage() {
 
             {/* CTO Card */}
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              {/* Founder Illustration Placeholder */}
+              {/* Founder Photo */}
               <div className="mb-6 flex justify-center">
                 <div className="relative">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-mint/20 to-teal/20 flex items-center justify-center">
-                    <div className="w-28 h-28 rounded-full bg-white flex items-center justify-center">
-                      <Icons.Code className="w-16 h-16 text-mint" />
-                    </div>
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-mint/20 to-teal/20 p-1">
+                    <Image
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=256&h=256&fit=crop&crop=face"
+                      alt="Co-Founder & CTO"
+                      width={128}
+                      height={128}
+                      className="w-full h-full rounded-full object-cover"
+                    />
                   </div>
                   <div className="absolute bottom-0 right-0 w-10 h-10 bg-mint rounded-full flex items-center justify-center border-4 border-white">
                     <Icons.Award className="w-6 h-6 text-white" />

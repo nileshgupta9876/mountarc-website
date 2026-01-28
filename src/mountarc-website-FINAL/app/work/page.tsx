@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Icons } from '../components/Icons'
 
 export const metadata = {
@@ -32,14 +33,15 @@ export default function WorkPage() {
               <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
                 {/* Project Visual */}
                 <div className="flex-1">
-                  <div className="relative aspect-video bg-gradient-to-br from-mint/10 to-teal/10 rounded-2xl overflow-hidden shadow-xl">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-                        {project.icon}
-                      </div>
-                    </div>
+                  <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
                     {/* Mock browser/app chrome */}
-                    <div className="absolute top-0 left-0 right-0 h-10 bg-gray-800/50 backdrop-blur-sm flex items-center px-4 gap-2">
+                    <div className="absolute top-0 left-0 right-0 h-10 bg-gray-800/70 backdrop-blur-sm flex items-center px-4 gap-2">
                       <div className="flex gap-2">
                         <div className="w-3 h-3 rounded-full bg-red-400"></div>
                         <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
@@ -137,7 +139,7 @@ export default function WorkPage() {
 
 const projects = [
   {
-    icon: <Icons.Shield className="w-20 h-20 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=450&fit=crop',
     category: 'FinTech',
     title: 'Real-Time Trading Platform',
     description: 'A high-performance trading platform enabling users to execute trades with sub-second latency',
@@ -147,7 +149,7 @@ const projects = [
     tech: ['Node.js', 'React', 'WebSockets', 'PostgreSQL', 'Redis', 'AWS']
   },
   {
-    icon: <Icons.BarChart3 className="w-20 h-20 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop',
     category: 'Analytics Dashboard',
     title: 'Business Intelligence Platform',
     description: 'Custom analytics dashboard providing real-time insights across multiple data sources',
@@ -157,7 +159,7 @@ const projects = [
     tech: ['React', 'Node.js', 'D3.js', 'BigQuery', 'Python', 'Apache Airflow']
   },
   {
-    icon: <Icons.Cloud className="w-20 h-20 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop',
     category: 'SaaS Product',
     title: 'Multi-Tenant SaaS Platform',
     description: 'Subscription-based business management platform serving 500+ organizations',
@@ -167,7 +169,7 @@ const projects = [
     tech: ['Next.js', 'MongoDB', 'Stripe', 'AWS', 'Redis', 'Docker']
   },
   {
-    icon: <Icons.Cpu className="w-20 h-20 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=450&fit=crop',
     category: 'AI/ML Application',
     title: 'AI-Powered Recommendation Engine',
     description: 'Machine learning system providing personalized product recommendations',
@@ -177,7 +179,7 @@ const projects = [
     tech: ['Python', 'TensorFlow', 'AWS SageMaker', 'FastAPI', 'PostgreSQL']
   },
   {
-    icon: <Icons.Smartphone className="w-20 h-20 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=450&fit=crop',
     category: 'Mobile-First',
     title: 'Cross-Platform Mobile App',
     description: 'Progressive web app with offline-first capabilities for field service teams',
@@ -187,7 +189,7 @@ const projects = [
     tech: ['React', 'PWA', 'Service Workers', 'IndexedDB', 'Node.js']
   },
   {
-    icon: <Icons.ShoppingCart className="w-20 h-20 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=450&fit=crop',
     category: 'E-Commerce',
     title: 'Headless E-Commerce Platform',
     description: 'Modern e-commerce solution with decoupled frontend and backend architecture',
@@ -197,7 +199,7 @@ const projects = [
     tech: ['Next.js', 'GraphQL', 'Stripe', 'Shopify', 'PostgreSQL', 'Vercel']
   },
   {
-    icon: <Icons.TrendingUp className="w-20 h-20 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=450&fit=crop',
     category: 'MVP',
     title: 'Startup MVP to Series A',
     description: 'Minimum viable product that helped startup validate concept and secure $2M Series A',
@@ -207,7 +209,7 @@ const projects = [
     tech: ['Next.js', 'Supabase', 'Vercel', 'Stripe', 'React']
   },
   {
-    icon: <Icons.Shield className="w-20 h-20 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=450&fit=crop',
     category: 'Enterprise',
     title: 'Enterprise Resource Planning (ERP) System',
     description: 'Custom ERP solution for manufacturing company with 500+ employees',

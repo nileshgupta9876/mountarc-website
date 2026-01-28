@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Icons } from '../components/Icons'
 import ContactForm from '../components/forms/ContactForm'
 
@@ -30,11 +31,15 @@ export default function ContactPage() {
 
             {/* Right Column - Illustration & Info */}
             <div className="space-y-8">
-              {/* Contact Illustration Placeholder */}
-              <div className="bg-gradient-to-br from-mint/10 to-teal/10 rounded-2xl p-12 flex items-center justify-center">
-                <div className="w-48 h-48 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <Icons.MessageSquare className="w-24 h-24 text-mint" />
-                </div>
+              {/* Contact Illustration */}
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=600&h=400&fit=crop"
+                  alt="Contact us - we're here to help"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-mint/30 to-teal/30"></div>
               </div>
 
               {/* Book a Call CTA */}

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Icons } from '../components/Icons'
 
 export default function BlogPage() {
@@ -99,10 +100,13 @@ export default function BlogPage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {upcomingArticles.map((article, index) => (
               <div key={index} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-mint/20 to-teal/20 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
-                    {article.icon}
-                  </div>
+                <div className="h-48 relative">
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-navy mb-2">{article.title}</h3>
@@ -143,17 +147,17 @@ const topics = [
 
 const upcomingArticles = [
   {
-    icon: <Icons.Cpu className="w-12 h-12 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
     title: 'Building AI-Powered Features',
     preview: 'A practical guide to integrating AI capabilities into your web applications'
   },
   {
-    icon: <Icons.Cloud className="w-12 h-12 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop',
     title: 'SaaS Architecture Patterns',
     preview: 'Essential architectural decisions for building scalable SaaS products'
   },
   {
-    icon: <Icons.Rocket className="w-12 h-12 text-mint" />,
+    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=400&fit=crop',
     title: 'MVP to Scale: A Roadmap',
     preview: 'How to evolve your MVP into a production-ready, scalable application'
   },

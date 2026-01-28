@@ -4,6 +4,12 @@ const nextConfig = {
   // Vercel handles serverless deployment automatically
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
 }
 
