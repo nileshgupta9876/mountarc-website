@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
+
+// Mark this route as dynamic (not statically generated)
+export const dynamic = 'force-dynamic'
 import { resend, EMAIL_CONFIG } from '@/lib/email/resend'
 import {
   contactSchema,
@@ -102,22 +105,30 @@ export async function POST(request: NextRequest) {
 
         // Send team notification (Email A)
         const teamEmail = contactTeamNotification(contactData, timestamp, pageUrl)
-        await resend.emails.send({
+        const teamResult = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           to: EMAIL_CONFIG.recipientEmail,
           subject: teamEmail.subject,
           html: teamEmail.html,
         })
+        if (teamResult.error) {
+          console.error('Team email failed:', teamResult.error)
+          throw new Error(teamResult.error.message)
+        }
 
         // Send user confirmation (Email B)
         const userEmail = contactUserConfirmation(contactData)
-        await resend.emails.send({
+        const userResult = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           replyTo: EMAIL_CONFIG.replyTo,
           to: contactData.email,
           subject: userEmail.subject,
           html: userEmail.html,
         })
+        if (userResult.error) {
+          console.error('User email failed:', userResult.error)
+          throw new Error(userResult.error.message)
+        }
 
         break
       }
@@ -135,22 +146,30 @@ export async function POST(request: NextRequest) {
 
         // Send team notification (Email C)
         const teamEmail = discoveryTeamNotification(discoveryData, timestamp, pageUrl)
-        await resend.emails.send({
+        const teamResult = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           to: EMAIL_CONFIG.recipientEmail,
           subject: teamEmail.subject,
           html: teamEmail.html,
         })
+        if (teamResult.error) {
+          console.error('Team email failed:', teamResult.error)
+          throw new Error(teamResult.error.message)
+        }
 
         // Send user confirmation (Email D)
         const userEmail = discoveryUserConfirmation(discoveryData)
-        await resend.emails.send({
+        const userResult = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           replyTo: EMAIL_CONFIG.replyTo,
           to: discoveryData.email,
           subject: userEmail.subject,
           html: userEmail.html,
         })
+        if (userResult.error) {
+          console.error('User email failed:', userResult.error)
+          throw new Error(userResult.error.message)
+        }
 
         break
       }
@@ -168,22 +187,30 @@ export async function POST(request: NextRequest) {
 
         // Send team notification (Email E)
         const teamEmail = newsletterTeamNotification(newsletterData, timestamp, pageUrl)
-        await resend.emails.send({
+        const teamResult = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           to: EMAIL_CONFIG.recipientEmail,
           subject: teamEmail.subject,
           html: teamEmail.html,
         })
+        if (teamResult.error) {
+          console.error('Team email failed:', teamResult.error)
+          throw new Error(teamResult.error.message)
+        }
 
         // Send welcome email (Email F)
         const welcomeEmail = newsletterWelcome(newsletterData)
-        await resend.emails.send({
+        const userResult = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           replyTo: EMAIL_CONFIG.replyTo,
           to: newsletterData.email,
           subject: welcomeEmail.subject,
           html: welcomeEmail.html,
         })
+        if (userResult.error) {
+          console.error('Welcome email failed:', userResult.error)
+          throw new Error(userResult.error.message)
+        }
 
         break
       }

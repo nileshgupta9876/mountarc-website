@@ -11,7 +11,9 @@ if (!process.env.RESEND_API_KEY) {
 export const resend = new Resend(RESEND_API_KEY)
 
 export const EMAIL_CONFIG = {
-  from: 'MountArc <noreply@mountarc.com>',
+  // Use Resend's test domain for development (no domain verification needed)
+  // Change to 'MountArc <noreply@mountarc.com>' after domain verification in production
+  from: 'MountArc <onboarding@resend.dev>',
   replyTo: 'contact@mountarc.com',
   recipientEmail: process.env.RECIPIENT_EMAIL || 'contact@mountarc.com',
 }
