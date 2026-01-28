@@ -13,6 +13,8 @@
 
 All code is implemented and build passes. Ready for QA testing.
 
+**Latest Fix (Jan 28):** Resolved critical API route issues - emails now send correctly via Resend test domain.
+
 ### What's Done
 | Component | Status |
 |-----------|--------|
@@ -74,10 +76,10 @@ NEXT_PUBLIC_RECAPTCHA_SITE_KEY=xxxxxxxxxx
 ## Recent Commits
 
 ```
+8a00a8d fix(email): resolve API route and email delivery issues
+6d4e70a docs: streamline STATUS.md with current project state
 122bf03 chore: update .gitignore
 8c6fe3f docs(engineering): add QA handoff for Phase 1
-269dfb8 feat(engineering): add lib folder with email utilities
-710892f feat(engineering): implement Phase 1 email and contact system
 ```
 
 ---
