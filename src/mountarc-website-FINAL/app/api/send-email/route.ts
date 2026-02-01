@@ -185,14 +185,21 @@ export async function POST(request: NextRequest) {
 
         const newsletterData = validationResult.data
 
+        console.log('=== NEWSLETTER SUBSCRIPTION DEBUG ===')
+        console.log('Subscriber email:', newsletterData.email)
+        console.log('Team recipient:', EMAIL_CONFIG.recipientEmail)
+        console.log('From address:', EMAIL_CONFIG.from)
+
         // Send team notification (Email E)
         const teamEmail = newsletterTeamNotification(newsletterData, timestamp, pageUrl)
+        console.log('Sending team notification...')
         const teamResult = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           to: EMAIL_CONFIG.recipientEmail,
           subject: teamEmail.subject,
           html: teamEmail.html,
         })
+        console.log('Team email result:', JSON.stringify(teamResult, null, 2))
         if (teamResult.error) {
           console.error('Team email failed:', teamResult.error)
           throw new Error(teamResult.error.message)
@@ -200,6 +207,7 @@ export async function POST(request: NextRequest) {
 
         // Send welcome email (Email F)
         const welcomeEmail = newsletterWelcome(newsletterData)
+        console.log('Sending welcome email to subscriber...')
         const userResult = await resend.emails.send({
           from: EMAIL_CONFIG.from,
           replyTo: EMAIL_CONFIG.replyTo,
@@ -207,11 +215,13 @@ export async function POST(request: NextRequest) {
           subject: welcomeEmail.subject,
           html: welcomeEmail.html,
         })
+        console.log('Welcome email result:', JSON.stringify(userResult, null, 2))
         if (userResult.error) {
           console.error('Welcome email failed:', userResult.error)
           throw new Error(userResult.error.message)
         }
 
+        console.log('=== NEWSLETTER EMAILS SENT SUCCESSFULLY ===')
         break
       }
 

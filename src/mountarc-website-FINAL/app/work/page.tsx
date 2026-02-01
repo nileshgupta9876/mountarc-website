@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Icons } from '../components/Icons'
+import TradingCapabilities from '../components/TradingCapabilities'
 
 export const metadata = {
   title: 'Our Work | MountArc Private Limited',
@@ -28,7 +29,10 @@ export default function WorkPage() {
             </p>
           </div>
 
-          <div className="space-y-16 max-w-6xl mx-auto">
+          {/* Real-Time Trading Platform — Interactive Showcase */}
+          <TradingCapabilities />
+
+          <div className="space-y-16 max-w-6xl mx-auto mt-16">
             {projects.map((project, index) => (
               <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
                 {/* Project Visual */}
@@ -138,16 +142,6 @@ export default function WorkPage() {
 }
 
 const projects = [
-  {
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=450&fit=crop',
-    category: 'FinTech',
-    title: 'Real-Time Trading Platform',
-    description: 'A high-performance trading platform enabling users to execute trades with sub-second latency',
-    challenge: 'Handle 10,000+ concurrent users with real-time price updates and ensure zero data loss during high-volume trading periods',
-    solution: 'Implemented microservices architecture with WebSocket connections, Redis caching, and PostgreSQL for transaction integrity',
-    result: 'Platform processes 50,000+ trades daily with <50ms latency and 99.99% uptime',
-    tech: ['Node.js', 'React', 'WebSockets', 'PostgreSQL', 'Redis', 'AWS']
-  },
   {
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop',
     category: 'Analytics Dashboard',
