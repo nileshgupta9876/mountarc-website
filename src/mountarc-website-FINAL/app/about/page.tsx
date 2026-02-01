@@ -182,7 +182,7 @@ export default function AboutPage() {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Let's discuss how we can help bring your vision to life
           </p>
-          <Link href="/contact" className="btn-primary bg-white text-mint text-lg hover:bg-gray-100">
+          <Link href="/contact" className="inline-block bg-white text-mint font-semibold py-3 px-8 rounded-xl text-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:bg-gray-100">
             Get in Touch
           </Link>
         </div>

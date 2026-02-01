@@ -151,14 +151,18 @@ export function discoveryTeamNotification(data: DiscoveryFormData, timestamp: st
       <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Email:</td>
       <td style="padding: 10px; border-bottom: 1px solid #eee;"><a href="mailto:${data.email}">${data.email}</a></td>
     </tr>
+    ${data.phone ? `
     <tr>
       <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Phone:</td>
       <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.phone}</td>
     </tr>
+    ` : ''}
+    ${data.preferredTime ? `
     <tr>
       <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Preferred Date/Time:</td>
       <td style="padding: 10px; border-bottom: 1px solid #eee; color: #5BB5A8; font-weight: bold;">${data.preferredTime}</td>
     </tr>
+    ` : ''}
     <tr>
       <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Budget Range:</td>
       <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.budget}</td>

@@ -5,18 +5,25 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import { useRouter } from 'next/navigation'
-import { discoverySchema, DiscoveryFormData, BUDGET_RANGES } from '@/lib/validation/schemas'
+import { CountryCode } from 'libphonenumber-js'
+import { discoverySchema, DiscoveryFormData, BUDGET_RANGES, validatePhone } from '@/lib/validation/schemas'
+import PhoneInput, { COUNTRIES } from './PhoneInput'
+import DateTimePicker from './DateTimePicker'
 
 export default function DiscoveryCallForm() {
   const router = useRouter()
   const { executeRecaptcha } = useGoogleReCaptcha()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [phoneCountry, setPhoneCountry] = useState<CountryCode>('IN')
+  const [phoneValue, setPhoneValue] = useState('')
+  const [phoneError, setPhoneError] = useState<string | null>(null)
 
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<DiscoveryFormData>({
     resolver: zodResolver(discoverySchema),
@@ -24,6 +31,7 @@ export default function DiscoveryCallForm() {
       name: '',
       email: '',
       phone: '',
+      phoneCountry: 'IN',
       preferredTime: '',
       description: '',
       budget: '',
@@ -33,7 +41,31 @@ export default function DiscoveryCallForm() {
   const descriptionValue = watch('description', '')
   const descriptionLength = descriptionValue?.length || 0
 
+  const handlePhoneChange = (phone: string) => {
+    setPhoneValue(phone)
+    setValue('phone', phone)
+    if (phoneError) setPhoneError(null)
+  }
+
+  const handleCountryChange = (country: CountryCode) => {
+    setPhoneCountry(country)
+    setValue('phoneCountry', country)
+    if (phoneError) setPhoneError(null)
+  }
+
   const onSubmit = async (data: DiscoveryFormData) => {
+    // Validate phone if provided
+    if (phoneValue && phoneValue.trim() !== '') {
+      const country = COUNTRIES.find((c) => c.code === phoneCountry)
+      const fullNumber = `${country?.dialCode || '+91'}${phoneValue.replace(/[\s-]/g, '')}`
+      if (!validatePhone(fullNumber, phoneCountry)) {
+        setPhoneError(`Please enter a valid phone number for ${country?.name || 'the selected country'}`)
+        return
+      }
+      // Store full number with dial code
+      data.phone = fullNumber
+    }
+
     setIsSubmitting(true)
     setError(null)
 
@@ -113,41 +145,31 @@ export default function DiscoveryCallForm() {
 
       <div>
         <label className="block text-navy font-semibold mb-2">
-          Phone Number <span className="text-red-500">*</span>
+          Phone Number
         </label>
-        <input
-          type="tel"
-          {...register('phone')}
-          placeholder="+1 (555) 123-4567"
-          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-mint text-navy ${
-            errors.phone ? 'border-red-300' : 'border-gray-300'
-          }`}
+        <PhoneInput
+          value={phoneValue}
+          countryCode={phoneCountry}
+          onPhoneChange={handlePhoneChange}
+          onCountryChange={handleCountryChange}
+          error={phoneError || undefined}
         />
-        {errors.phone && (
-          <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
-        )}
         <p className="mt-1 text-sm text-gray-500">
-          Include country code (required for scheduling the call)
+          Optional — helps us schedule the call faster
         </p>
       </div>
 
       <div>
         <label className="block text-navy font-semibold mb-2">
-          Preferred Date/Time <span className="text-red-500">*</span>
+          Preferred Date & Time
         </label>
-        <input
-          type="text"
-          {...register('preferredTime')}
-          placeholder="e.g., Next Tuesday afternoon, or any weekday morning"
-          className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-mint text-navy ${
-            errors.preferredTime ? 'border-red-300' : 'border-gray-300'
-          }`}
+        <DateTimePicker
+          value={watch('preferredTime') || ''}
+          onChange={(val) => setValue('preferredTime', val, { shouldValidate: true })}
+          error={errors.preferredTime?.message}
         />
-        {errors.preferredTime && (
-          <p className="mt-1 text-sm text-red-500">{errors.preferredTime.message}</p>
-        )}
         <p className="mt-1 text-sm text-gray-500">
-          Suggest your preferred time - we'll confirm availability
+          Select your preferred slot — we&apos;ll confirm availability
         </p>
       </div>
 

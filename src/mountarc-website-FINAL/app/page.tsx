@@ -209,7 +209,7 @@ export default function Home() {
           <p className="text-2xl text-white/90 mb-10 leading-relaxed">
             Book a free discovery call. We'll discuss your challenges and explore whether we're a good fit—no sales pressure.
           </p>
-          <Link href="/contact" className="btn-primary bg-white text-mint hover:bg-gray-100 text-lg inline-flex items-center gap-3">
+          <Link href="/contact" className="bg-white text-mint font-semibold py-3 px-8 rounded-xl hover:bg-gray-100 text-lg inline-flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
             </svg>

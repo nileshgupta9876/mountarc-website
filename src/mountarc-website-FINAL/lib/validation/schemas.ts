@@ -1,16 +1,18 @@
 import { z } from 'zod'
+import { isValidPhoneNumber, CountryCode } from 'libphonenumber-js'
 
-// Phone validation regex - supports international formats with country code
-const phoneRegex = /^\+\d{1,3}\s?\d{6,14}$/
+// Validate phone number using libphonenumber-js with country context
+function validatePhone(phone: string, countryCode: CountryCode): boolean {
+  if (!phone || phone.trim() === '') return true // optional field
+  // Strip spaces and dashes for validation, prepend dial code is handled by the form
+  return isValidPhoneNumber(phone, countryCode)
+}
 
 export const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email'),
-  phone: z
-    .string()
-    .regex(phoneRegex, 'Include country code (e.g., +1 555-123-4567)')
-    .optional()
-    .or(z.literal('')),
+  phone: z.string().optional().or(z.literal('')),
+  phoneCountry: z.string().optional(),
   projectType: z.string().optional(),
   budget: z.string().optional(),
   message: z
@@ -22,8 +24,9 @@ export const contactSchema = z.object({
 export const discoverySchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email'),
-  phone: z.string().regex(phoneRegex, 'Include country code (e.g., +1 555-123-4567)'),
-  preferredTime: z.string().min(10, 'Please provide your preferred date/time'),
+  phone: z.string().optional().or(z.literal('')),
+  phoneCountry: z.string().optional(),
+  preferredTime: z.string().optional().or(z.literal('')),
   description: z
     .string()
     .min(20, 'Description must be at least 20 characters')
@@ -38,6 +41,9 @@ export const newsletterSchema = z.object({
 export const unsubscribeSchema = z.object({
   email: z.string().email('Please enter a valid email'),
 })
+
+// Phone validation helper for use in form components
+export { validatePhone }
 
 // Types
 export type ContactFormData = z.infer<typeof contactSchema>
