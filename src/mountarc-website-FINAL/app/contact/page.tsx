@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { Icons } from '../components/Icons'
 import ContactForm from '../components/forms/ContactForm'
+import ContactIllustration from '../components/ContactIllustration'
 
 export default function ContactPage() {
   return (
@@ -20,7 +20,7 @@ export default function ContactPage() {
 
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Left Column - Contact Form */}
             <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-sm">
               <h2 className="text-3xl font-bold text-navy mb-4">Send Us a Message</h2>
@@ -30,17 +30,9 @@ export default function ContactPage() {
             </div>
 
             {/* Right Column - Illustration & Info */}
-            <div className="space-y-8">
+            <div className="space-y-8 lg:sticky lg:top-8 lg:self-start">
               {/* Contact Illustration */}
-              <div className="relative h-64 rounded-2xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=600&h=400&fit=crop"
-                  alt="Contact us - we're here to help"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-mint/30 to-teal/30"></div>
-              </div>
+              <ContactIllustration />
 
               {/* Book a Call CTA */}
               <div className="bg-gradient-to-r from-mint/10 to-teal/10 p-6 rounded-2xl border border-mint/20">
