@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Icons } from './components/Icons'
+import HeroIllustration from './components/HeroIllustration'
 
 export default function Home() {
   return (
@@ -56,45 +57,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero Illustration Placeholder */}
+            {/* Hero Illustration - Connected Node Network */}
             <div className="relative animate-fade-in-up">
-              <div className="relative">
-                <div className="aspect-square max-w-[500px] mx-auto relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative w-full h-full">
-                      {/* Center icon */}
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-mint/10 rounded-2xl flex items-center justify-center animate-float">
-                        <Icons.Cpu className="w-20 h-20 text-mint" />
-                      </div>
-                      
-                      {/* Floating elements */}
-                      <div className="absolute top-[10%] left-[15%] w-20 h-20 bg-mint/5 rounded-xl flex items-center justify-center animate-float-delayed-1">
-                        <Icons.Cloud className="w-12 h-12 text-mint/60" />
-                      </div>
-                      <div className="absolute top-[15%] right-[10%] w-24 h-24 bg-mint/5 rounded-xl flex items-center justify-center animate-float-delayed-2">
-                        <Icons.BarChart3 className="w-14 h-14 text-mint/60" />
-                      </div>
-                      <div className="absolute bottom-[20%] left-[10%] w-20 h-20 bg-mint/5 rounded-xl flex items-center justify-center animate-float-delayed-3">
-                        <Icons.Rocket className="w-12 h-12 text-mint/60" />
-                      </div>
-                      <div className="absolute bottom-[15%] right-[15%] w-20 h-20 bg-mint/5 rounded-xl flex items-center justify-center animate-float-delayed-1">
-                        <Icons.Shield className="w-12 h-12 text-mint/60" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 mt-8 lg:absolute lg:bottom-0 lg:left-0 lg:right-0">
-                  <div className="glass-card p-6 rounded-xl">
-                    <div className="stat-number text-3xl">7+</div>
-                    <p className="text-gray-300 font-medium mt-1 text-sm">Years Delivering</p>
-                  </div>
-                  <div className="glass-card p-6 rounded-xl">
-                    <div className="stat-number text-3xl">5</div>
-                    <p className="text-gray-300 font-medium mt-1 text-sm">Countries Served</p>
-                  </div>
-                </div>
-              </div>
+              <HeroIllustration />
             </div>
           </div>
 
